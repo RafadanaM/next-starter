@@ -1,0 +1,15 @@
+
+services:
+  next-dev:
+    container_name: next-dev
+    build: 
+      context: ./web
+      target: dev
+    ports:
+      - 3000:3000
+    environment:
+    # needed to enable hot reload
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./web/src:/usr/src/app/src
+      - ./web/public:/usr/src/app/public

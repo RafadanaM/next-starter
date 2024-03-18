@@ -1,0 +1,27 @@
+
+services:
+  next-prod:
+    container_name: next-prod
+    build: 
+      context: ./web
+      target: prod
+    ports:
+      - 3000:3000
+    environment:
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    networks:
+      - my_network
+
+  nginx:
+    build: 
+      context: ./nginx
+    ports:
+      - 5000:80
+    networks:
+      - my_network
+    depends_on:
+      - next-prod
+
+networks:
+  my_network:
