@@ -7,9 +7,9 @@ services:
       target: prod
     image: rafadanam/next-starter
     ports:
-      - ${PORT}:${PORT}
+      - ${PORT:-3000}:${PORT:-3000}
     environment:
-      - PORT="${PORT:-3000}"
+      - PORT=${PORT:-3000}
       - HOSTNAME="${HOSTNAME:-0.0.0.0}"
     networks:
       - my_network
