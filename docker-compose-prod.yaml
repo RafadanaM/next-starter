@@ -7,15 +7,17 @@ services:
       target: prod
     image: rafadanam/next-starter
     ports:
-      - 3000:3000
-    env_file:
-     - .env.prod
+      - ${PORT}:${PORT}
+    environment:
+      - PORT="${PORT:-3000}"
+      - HOSTNAME="${HOSTNAME:-0.0.0.0}"
     networks:
       - my_network
 
   nginx:
     build: 
       context: ./nginx
+    image: rafadanam/nginx
     ports:
       - 80:80
     networks:
