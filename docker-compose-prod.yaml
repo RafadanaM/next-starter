@@ -5,6 +5,7 @@ services:
     build: 
       context: ./web
       target: prod
+    image: rafadanam/next-starter
     ports:
       - 3000:3000
     env_file:
