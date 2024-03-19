@@ -7,9 +7,8 @@ services:
       target: dev
     ports:
       - 3000:3000
-    environment:
-    # needed to enable hot reload
-      - WATCHPACK_POLLING=true
+    env_file:
+      - .env.dev 
     volumes:
       - ./web/src:/usr/src/app/src
       - ./web/public:/usr/src/app/public
